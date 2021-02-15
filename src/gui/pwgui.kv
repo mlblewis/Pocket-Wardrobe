@@ -1,0 +1,71 @@
+# Adds our menus into a ScreenManager object so they can be controlled
+ScreenManager:
+	MainMenu:
+	PhotoMenu:
+
+# GUI elements are added to our MainMenu class here
+<MainMenu>:
+	name: "mainMenu"
+	
+	# FloatLayout style interface to hold our widgets
+	FloatLayout:
+		orientation: 'vertical'
+		
+		# Sets the background to white
+		Widget:
+			canvas:
+				Color:
+					rgba: 1, 1, 1, 1
+				Rectangle:
+					size: self.size
+					pos: self.pos
+		
+		# The logo
+		Image:
+			source: "gfx/PWLogo2.png"
+			size_hint: 0.3, 0.3
+			pos_hint: {"x":0.36, "y":0.65}
+		
+		# Takes us to the photo menu
+		Button:
+			font_size: 40
+			color: 0.3, 0.6, 0.7, 1
+			size_hint: 0.4, 0.2
+			pos_hint: {"x":0.3, "y":0.3}
+			text: "Take Photo"
+			on_release:
+				app.root.current = "photoMenu"
+				root.manager.transition.direction = "left"
+
+
+# GUI elements are added to the PhotoMenu class here
+<PhotoMenu>:
+	name: "photoMenu"
+	
+	# We use a BoxLayout interface for PhotoMenu's widgets
+	BoxLayout:
+		orientation: 'vertical'
+		
+		# The camera widget. Uses the first camera it detects by default
+		Camera:
+			id: camera
+			play: True  # When play is True, Camera shows a live video feed
+		
+		# Captures a photo and saves it. Returns to the main menu
+		Button:
+			text: 'Capture Photo'
+			size_hint_y: None
+			height: '48dp'
+			on_press:
+				root.capture()
+				app.root.current = "mainMenu"
+				root.manager.transition.direction = "right"
+		
+		# Returns to the main menu without taking a photo
+		Button:
+			text: 'Cancel'
+			size_hint_y: None
+			height: '48dp'
+			on_release:
+				app.root.current = "mainMenu"
+				root.manager.transition.direction = "right"
