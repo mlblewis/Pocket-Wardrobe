@@ -8,7 +8,7 @@
         string(layer) outer,under, etc
         bool(graphic) does it have a picture(or words) or not essentialy
     """
-class Top(object):
+class Top(Clothing):
     """
     Method: __init__
         Creates the top object, as the name would suggest
@@ -24,6 +24,15 @@ class Top(object):
         self.form = form
         self.layer = layer
         self.graphic = graphic
+        self.tops = []
+    __str__(self):
+        return "Color: %s, Style: %s, Layer: %s, Grahpic: %b " % (self.color, self.form, self.layer, self.graphic)
+    addTop(self, top):
+        self.tops.append(top)
+    removeTop(self, top):
+        for x in range(len(self.tops))
+            if tops[x] = top 
+                tops.remove(x)
     """
     Method: setColor
         sets the color for the top
