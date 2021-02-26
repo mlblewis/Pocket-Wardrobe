@@ -17,6 +17,4 @@ class Shirt(Clothing):
     getSize(self):
         return self.size
     getPrice(self):
-        return self.price
-        
-    
+        return self.price 

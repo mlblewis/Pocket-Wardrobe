@@ -25,10 +25,27 @@ class Top(Clothing):
         self.layer = layer
         self.graphic = graphic
         self.tops = []
+    """
+    Method: __str__
+        Creates a string representation of the class object
+    Takes: self
+    Returns: String
+    """
     __str__(self):
         return "Color: %s, Style: %s, Layer: %s, Grahpic: %b " % (self.color, self.form, self.layer, self.graphic)
+    """
+    Method: addTop
+        adds an object to tops
+    Takes: self, top(object)
+    Returns: n/a
+    """
     addTop(self, top):
         self.tops.append(top)
+    """
+    Method: removeTop
+        removes an object from tops
+    Takes: self, top(object)
+    Returns: n/a"""
     removeTop(self, top):
         for x in range(len(self.tops))
             if tops[x] = top 
