@@ -11,17 +11,6 @@ from kivy.uix.camera import Camera
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 
-class CameraClick(BoxLayout):
-    def capture(self):
-        '''
-        Function to capture the images and give them the names
-        according to their captured time and date.
-        '''
-        camera = self.ids['camera']
-        timestr = time.strftime("%Y%m%d_%H%M%S")
-        camera.export_to_png("IMG_{}.png".format(timestr))
-        print("Captured")
-
 # The main menu class for the GUi
 class MainMenu(Screen):
 	pass
@@ -45,7 +34,6 @@ class PhotoMenu(Screen):
 class MenuMan(ScreenManager):
 	def __init__(self):
 		super(MenuMan, self).__init__()
-
 
 # The main app class
 class pwguiApp(App):
