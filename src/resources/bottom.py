@@ -12,15 +12,16 @@ class Bottom(Clothing):
     Takes: self
     Returns: a Bottom object
     """
-    __init__(self):
-        bottoms = []
+    def __init__(self):
+		super(Bottom, self)
+        self.bottoms = []
     """
     Method: addBottom
         Adds a bottom to the bottoms list
     Takes: self, rhs
     Returns: n/a
     """
-    addBottom(self, rhs):
+    def addBottom(self, rhs):
         bottoms.append(rhs)
     """
     Method: removeBottom
@@ -28,7 +29,7 @@ class Bottom(Clothing):
     Takes: self, rhs
     Returns: n/a
     """
-    removeBottom(self, rhs):
+    def removeBottom(self, rhs):
         for x in range(len(self.bottoms))
             if bottoms[x] = rhs 
                 bottoms.remove(x)        

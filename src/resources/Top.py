@@ -19,7 +19,7 @@ class Top(Clothing):
         bool(graphic) does it have a picture(or words) or not essentialy
     Returns: a top object
     """
-    __init__(self, color, form, layer, graphic):
+    def __init__(self, color, form, layer, graphic):
         self.color = color
         self.form = form
         self.layer = layer
@@ -31,7 +31,7 @@ class Top(Clothing):
     Takes: self
     Returns: String
     """
-    __str__(self):
+    def __str__(self):
         return "Color: %s, Style: %s, Layer: %s, Grahpic: %b " % (self.color, self.form, self.layer, self.graphic)
     """
     Method: addTop
@@ -39,14 +39,14 @@ class Top(Clothing):
     Takes: self, top(object)
     Returns: n/a
     """
-    addTop(self, top):
+    def addTop(self, top):
         self.tops.append(top)
     """
     Method: removeTop
         removes an object from tops
     Takes: self, top(object)
     Returns: n/a"""
-    removeTop(self, top):
+    def removeTop(self, top):
         for x in range(len(self.tops))
             if tops[x] = top 
                 tops.remove(x)
@@ -56,7 +56,7 @@ class Top(Clothing):
     Takes: tuple(color)
     Returns: n/a
         """
-    setColor(color):
+    def setColor(color):
         self.color = color
     """
     Method: setForm
@@ -64,7 +64,7 @@ class Top(Clothing):
     Takes: string(form)
     Returns: n/a
     """
-    setForm(form):
+    def setForm(form):
         self.form = form
     """
     Method: setLayer
@@ -72,7 +72,7 @@ class Top(Clothing):
     Takes: string(layer)
     Returns: n/a
     """
-    setLayer(layer):
+    def setLayer(layer):
         self.layer = layer
     """
     Method: setGraphic
@@ -80,33 +80,33 @@ class Top(Clothing):
     Takes: bool(graphic)
     Returns: n/a
     """        
-    setGraphic(graphic):
+    def setGraphic(graphic):
         self.graphic = graphic
     """
     Method: getColor
     Takes: self
     Returns: tuple(color)
     """
-    getColor(self):
+    def getColor(self):
         return self.color
     """
     Method: getForm
     Takes: self
     Returns: string(form)
     """
-    getForm(self):
+    def getForm(self):
         return self.form
     """
     Method: getLayer
     Takes: self
     Returns: string(layer)
     """
-    getLayer(self):
+    def getLayer(self):
         return self.layer
     """
     Method: getGraphic
     Takes: self
     Returns: bool(graphic)
     """
-    getGraphic(self):
+    def getGraphic(self):
         return self.graphic

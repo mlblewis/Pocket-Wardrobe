@@ -8,14 +8,14 @@ Atributes:
     price(float) price of jacket
     material(string) material of jacket
 """
-class Jacket(Clothing):
+class Jacket(Top):
 """
 Method: __init__
     Creates Jacket object
 Takes: brand(string), size(string), price(float), material(String)
 Returns: n/a
 """
-    __init__(self, brand, size, price, material):
+    def __init__(self, brand, size, price, material):
         self.brand = brand
         self.size = size
         self.price = price
@@ -26,7 +26,7 @@ Method: __str__
 Takes: Self
 Returns: String
 """
-    __str__(self):
+    def __str__(self):
         return "Brand: %s, Size: %s, Price: %s, Material: %s" \
             % (self.brand, self.size, self.price, self.material)
 """
@@ -35,7 +35,7 @@ Method: setBrand
 Takes: self, brand
 Returns: n/a
 """
-    setBrand(self, brand):
+    def setBrand(self, brand):
         self.brand = brand
 """
 Method: setSize
@@ -43,7 +43,7 @@ Method: setSize
 Takes: self, size
 Returns: n/a
 """
-    setSize(self, size):
+    def setSize(self, size):
         self.size = size
 """
 Method: setPrice
@@ -51,7 +51,7 @@ Method: setPrice
 Takes: self, price
 Returns: n/a
 """ 
-    setPrice(self, price):
+    def setPrice(self, price):
         self.price = price 
 """
 Method: setMaterial
@@ -59,7 +59,7 @@ Method: setMaterial
 Takes: Self, material
 Returns: n/a
 """
-    setMaterial(self, material):
+    def setMaterial(self, material):
         self.material = material
 """
 Method: getBrand
@@ -67,7 +67,7 @@ Method: getBrand
 Takes: self
 Returns: brand
 """
-    getBrand(self):
+    def getBrand(self):
         return self.brand
 """
 Method: getSize
@@ -75,7 +75,7 @@ Method: getSize
 Takes: self
 Returns: size
 """
-    getSize(self):
+    def getSize(self):
         return self.size
 """
 Method: getPrice
@@ -83,7 +83,7 @@ Method: getPrice
 Takes: self
 Returns: price
 """
-    getPrice(self):
+    def getPrice(self):
         return self.price
 """
 Method: getMaterial
@@ -91,5 +91,5 @@ Method: getMaterial
 Takes: self
 Returns: material
 """
-    getMaterial(self):
+    def getMaterial(self):
         return self.material
