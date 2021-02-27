@@ -15,11 +15,15 @@ Method: __init__
 Takes: brand(string), size(string), price(float), material(String)
 Returns: n/a
 """
-    def __init__(self, brand, size, price, material):
+    def __init__(self, brand, size, price, material, color, form, layer, graphic):
         self.brand = brand
         self.size = size
         self.price = price
         self.material = material
+        self.color = color
+        self.form = form
+        self.layer = layer
+        self.graphic = graphic
 """
 Method: __str__
     Creates a string representation of the jacket object
