@@ -1,20 +1,20 @@
 import Clothing
-class Shirt(Clothing):
-    __init__(self, brand, size, price):
+class Shirt(Top):
+    def __init__(self, brand, size, price):
         self.brand = brand
         self.size = size
         self.price = price
-    __str__(self):
+    def __str__(self):
         return "Brand: %s, Size: %s, Price: %s " % (self.brand, self.size, self.price)
-    setBrand(self, brand):
+    def setBrand(self, brand):
         self.brand = brand
-    setSize(self, size):
+    def setSize(self, size):
         self.size = size 
-    setPrice(self, price):
+    def setPrice(self, price):
         self.price = price 
-    getBrand(self):
+    def getBrand(self):
         return self.brand
-    getSize(self):
+    def getSize(self):
         return self.size
-    getPrice(self):
+    def getPrice(self):
         return self.price 

@@ -1,6 +1,6 @@
 import bottom
 class Pants(bottom):
-    __init__(self, color, form, layer, graphic, brand, size, price):
+    def __init__(self, color, form, layer, graphic, brand, size, price):
         self.color = color 
         self.form = form 
         self.layer = layer 
@@ -8,7 +8,7 @@ class Pants(bottom):
         self.brand = brand 
         self.size = size 
         self.price = price 
-    __str__(self):
+    def __str__(self):
         return """Color: %s, Form: %s, Layer %s, Graphic: %s, Brand: %s, Size %s,
          Price: %s""" % (self.color, self.form, self.layer, self.graphic, \
              self.brand, self.size, self.price)
@@ -18,7 +18,7 @@ class Pants(bottom):
     Takes: tuple(color)
     Returns: n/a
         """
-    setColor(color):
+    def setColor(color):
         self.color = color
     """
     Method: setForm
@@ -26,7 +26,7 @@ class Pants(bottom):
     Takes: string(form)
     Returns: n/a
     """
-    setForm(form):
+    def setForm(form):
         self.form = form
     """
     Method: setLayer
@@ -34,7 +34,7 @@ class Pants(bottom):
     Takes: string(layer)
     Returns: n/a
     """
-    setLayer(layer):
+    def setLayer(layer):
         self.layer = layer
     """
     Method: setGraphic
@@ -42,45 +42,45 @@ class Pants(bottom):
     Takes: bool(graphic)
     Returns: n/a
     """        
-    setGraphic(graphic):
+    def setGraphic(graphic):
         self.graphic = graphic   
-    setBrand(self, brand):
+    def setBrand(self, brand):
         self.brand = brand
-    setSize(self, size):
+    def setSize(self, size):
         self.size = size 
-    setPrice(self, price):
+    def setPrice(self, price):
         self.price = price
     """
     Method: getColor
     Takes: self
     Returns: tuple(color)
     """
-    getColor(self):
+    def getColor(self):
         return self.color
     """
     Method: getForm
     Takes: self
     Returns: string(form)
     """
-    getForm(self):
+    def getForm(self):
         return self.form
     """
     Method: getLayer
     Takes: self
     Returns: string(layer)
     """
-    getLayer(self):
+    def getLayer(self):
         return self.layer
     """
     Method: getGraphic
     Takes: self
     Returns: bool(graphic)
     """
-    getGraphic(self):
+    def getGraphic(self):
         return self.graphic
-    getBrand(self):
+    def getBrand(self):
         return self.brand
-    getSize(self):
+    def getSize(self):
         return self.size
-    getPrice(self):
+    def getPrice(self):
         return self.price

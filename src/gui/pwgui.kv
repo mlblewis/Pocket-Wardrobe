@@ -1,5 +1,5 @@
 # Adds our menus into a ScreenManager object so they can be controlled
-ScreenManager:
+<MenuMan>:
 	MainMenu:
 	PhotoMenu:
 
@@ -42,25 +42,26 @@ ScreenManager:
 <PhotoMenu>:
 	name: "photoMenu"
 	
-	# We use a BoxLayout interface for PhotoMenu's widgets
 	BoxLayout:
+	# We use a BoxLayout interface for PhotoMenu's widgets
 		orientation: 'vertical'
-		
+
 		# The camera widget. Uses the first camera it detects by default
 		Camera:
 			id: camera
-			play: True  # When play is True, Camera shows a live video feed
-		
+			play: True
+
 		# Captures a photo and saves it. Returns to the main menu
 		Button:
 			text: 'Capture Photo'
 			size_hint_y: None
 			height: '48dp'
 			on_press:
+				camera.play: True
 				root.capture()
 				app.root.current = "mainMenu"
 				root.manager.transition.direction = "right"
-		
+
 		# Returns to the main menu without taking a photo
 		Button:
 			text: 'Cancel'
