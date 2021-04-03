@@ -1,4 +1,4 @@
-from gui.pwgui import pwguiApp
+from PWApp import PocketWardrobe
 
 if __name__ == "__main__":
-	pwguiApp().run()
+	PocketWardrobe().run() # Run the kivy app
