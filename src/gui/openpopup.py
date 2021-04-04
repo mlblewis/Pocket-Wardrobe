@@ -17,6 +17,7 @@ class OpenPopup(Popup):
 		super().__init__()
 		
 		self.size_hint = (0.9, 0.9)
+		self.title = 'Open an Image'
 		
 		self.layout = BoxLayout(orientation = 'vertical')
 		self.add_widget(self.layout)

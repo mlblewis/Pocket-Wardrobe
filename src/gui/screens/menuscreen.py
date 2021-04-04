@@ -60,7 +60,7 @@ class MenuScreen(Screen):
 			on_press = self.SelectFile)
 		self.layout.add_widget(self.buttonOpenPic)
 		
-	# Button event handler. Takes hte user to the Camera screen
+	# Button event handler. Takes the user to the Camera screen
 	def GotoCamera(self, event):
 		self.manager.transition.direction = 'left'
 		self.manager.transition.duration = 0.25
