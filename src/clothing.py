@@ -1,3 +1,5 @@
+from clothingcolor import ClothingColor
+
 """
 Class: Clothing
 Methods: __init__, set
@@ -23,6 +25,9 @@ class Clothing():
 			self.price = kwargs['price']
 		else:
 			self.price = -1
+		
+		if self.image != "":
+			self.color = ClothingColor(self.image).GetColor()
 	
 	# Used to re-initialize a clothing object if necessary
 	def set(self, **kwargs):
