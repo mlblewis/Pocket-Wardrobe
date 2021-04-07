@@ -48,4 +48,11 @@ class OpenPopup(Popup):
 	
 	# A simple getter for the current selection in the file browser
 	def GetSelection(self):
-		return str(self.fileBrowser.selection)
+		# Grab the path of the selected file
+		path = str(self.fileBrowser.selection)
+		
+		# Remove unecessary characters from file path string
+		path = path.replace('[', '')
+		path = path.replace(']', '')
+		path = path.replace('\'', '')
+		return path
