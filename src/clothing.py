@@ -30,7 +30,9 @@ class Clothing():
 			self.color = ClothingColor(self.image).GetColor()
 	
 	# Used to re-initialize a clothing object if necessary
-	def set(self, **kwargs):
+	def setAttributes(self, **kwargs):
 		self.__init__(**kwargs)
+	
+	
 		
 		

@@ -5,6 +5,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 from gui.clothingimage import ClothingImage
 from kivy.core.window import Window
+from kivy.app import App
 
 """
 Class: WardrobeGUI
@@ -23,11 +24,10 @@ class WardrobeGUI(ScrollView):
 		
 		self.size_hint = (1, 1)
 		self.size = (Window.width, Window.height)
-		self.filename = 'wardrobe.dat'
+		#self.filename = 'wardrobe.dat'
 		
 		self.layout = GridLayout(
 		cols = 2,
-		spacing = 5,
 		size_hint_y = None)
 		self.layout.bind(minimum_height = self.layout.setter('height'))
 		
@@ -38,19 +38,6 @@ class WardrobeGUI(ScrollView):
 	def UpdateWidgets(self):
 		self.layout.clear_widgets()
 		
-		wardrobe = list(self.LoadWardrobeFile())
-		for cloth in wardrobe:
-			self.layout.add_widget(cloth)
-	
-	# Loads the wardrobe file and grabs all of its contents
-	def LoadWardrobeFile(self):
-		if os.path.isfile(self.filename):
-			with open(self.filename, "rb") as f:
-				while True:
-					try:
-						yield ClothingImage(
-						clothing = pickle.load(f),
-						size_hint_y = None,
-						height = (Window.height / 7))
-					except EOFError:
-						break
+		wardrobe = App.get_running_app().wardrobe.clothes
+		for name, cloth in wardrobe.items():
+			self.layout.add_widget(ClothingImage(clothing = cloth))

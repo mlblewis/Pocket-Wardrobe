@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.camera import Camera
+from kivy.app import App
 from clothing import Clothing
 
 
@@ -44,22 +45,11 @@ class CameraScreen(Screen):
 		self.manager.transition.direction = 'right'
 		self.manager.transition.duration = 0.25
 		self.manager.current = 'mainMenu'
-
-	# Event handler for the 'take photo' button. Takes a photo and saves it
+	
+	# Take a new photo from device's camera. Save into wardrobe as Clothing object
 	def TakePic(self, event):
 		fileName = "IMG_{}.png".format(time.strftime("%Y%m%d_%H%M%S"))
 		self.camera.export_to_png(fileName)
-		
-		# Determines if we should create wardrobe.dat, or append it if it exists
-		if os.path.isfile('wardrobe.dat'):
-			access = 'ab'
-		else:
-			access = 'wb'
-		
-		# Put the filepath to the image in a Clothing object and save it to the wardrobe
-		with open('wardrobe.dat', access) as out:
-			cloth = Clothing(image = fileName)
-			pickle.dump(cloth, out, 0)
-		del cloth
-		
+		cloth = Clothing(image = fileName)
+		App.get_running_app().wardrobe.SaveClothing(cloth)
 		self.GotoMenu(event)

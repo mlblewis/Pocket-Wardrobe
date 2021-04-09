@@ -1,5 +1,6 @@
 import os
 
+from wardrobe import Wardrobe
 from gui.screens.menuscreen import MenuScreen
 from gui.screens.camerascreen import CameraScreen
 from gui.screens.wardrobescreen import WardrobeScreen
@@ -17,6 +18,9 @@ App type. It returns a screen manager containing all of the app's menus.
 class PocketWardrobe(App):
 	def build(self):
 		App.title = ('Pocket Wardrobe')
+		
+		# Create a wardrobe object
+		self.wardrobe = Wardrobe()
 		
 		# Set the window's background to white
 		Window.clearcolor = (1, 1, 1, 1)
