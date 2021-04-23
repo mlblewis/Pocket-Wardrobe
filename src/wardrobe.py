@@ -3,7 +3,7 @@ import pickle
 
 """
 Class: Wardrobe
-Methods: __init__, SaveClothing, GetClothing
+Methods: __init__, SaveClothing, GetClothing, DeleteClothing
 Description:
 This is a wardrobe object. It handles loading and saving of Clothing objects to files.
 It also contains a dictionary of clothing objects currently saved.
@@ -34,7 +34,9 @@ class Wardrobe():
 		self.GetClothing()
 	
 	# Save a clothing object to the wardrobe. Appends the clothes list and creates the file.
-	def SaveClothing(self, clothing):		
+	# If a clothing object already exists, it is deleted first, and then the new one is saved.
+	def SaveClothing(self, clothing):
+		self.DeleteClothing(clothing)
 		fileName = clothing.image.replace('.png', '.dat')
 		self.clothes[fileName] = clothing
 		
@@ -47,4 +49,13 @@ class Wardrobe():
 		for fileName in os.listdir(self.directory):
 			with open(os.path.join(self.directory, fileName), "rb") as f:
 				self.clothes[fileName] = pickle.load(f)
+	
+	# Remove an article of clothing from the wardrobe
+	def DeleteClothing(self, clothing):
+		fileName = clothing.image.replace('.png', '.dat')
 		
+		if fileName in self.clothes:
+			self.clothes.pop(fileName)
+		
+		if fileName in os.listdir(self.directory):
+			os.remove(os.path.join(self.directory, fileName))

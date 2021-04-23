@@ -23,9 +23,17 @@ class WardrobeScreen(Screen):
 		self.wardrobeList = WardrobeGUI()
 		self.layout.add_widget(self.wardrobeList)
 		
+		self.updateButton = Button(
+			size_hint_y = 0.15,
+			text = 'Refresh Wardrobe',
+			font_size = 20,
+			on_press = self.UpdateWardrobeButton)
+		self.layout.add_widget(self.updateButton)
+		
 		self.menuButton = Button(
 			size_hint_y = 0.15,
 			text = 'Back to Menu',
+			font_size = 20,
 			on_press = self.GotoMenu)
 		self.layout.add_widget(self.menuButton)
 		
@@ -39,6 +47,10 @@ class WardrobeScreen(Screen):
 	
 	# Tells the WardrobeGUI object to re-load the wardrobe
 	def UpdateWardrobe(self):
+		self.wardrobeList.UpdateWidgets()
+	
+	# Kivy on_press-friendly version of the UpdateWardrobe method
+	def UpdateWardrobeButton(self, event):
 		self.wardrobeList.UpdateWidgets()
 	
 	

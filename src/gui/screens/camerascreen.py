@@ -8,6 +8,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.camera import Camera
 from kivy.app import App
 from clothing import Clothing
+from gui.clothingpopup import ClothingPopup
 
 
 """
@@ -30,12 +31,14 @@ class CameraScreen(Screen):
 
 		self.buttonTake = Button(
 			text = 'Take Photo',
+			font_size = 20,
 			on_press = self.TakePic,
 			size_hint_y = 0.15)
 		self.layout.add_widget(self.buttonTake)
 
 		self.buttonCancel = Button(
-			text = 'Cancel',
+			text = 'Back to Menu',
+			font_size = 20,
 			on_press = self.GotoMenu,
 			size_hint_y = 0.15)
 		self.layout.add_widget(self.buttonCancel)
@@ -46,10 +49,18 @@ class CameraScreen(Screen):
 		self.manager.transition.duration = 0.25
 		self.manager.current = 'mainMenu'
 	
+	# An event handler for the ClothingPopup object to save the clothing to the wardrobe
+	def SaveClothing(self, event):
+		App.get_running_app().wardrobe.SaveClothing(self.saveClothing.clothing)
+		self.saveClothing.dismiss()
+		self.GotoMenu(event)
+	
 	# Take a new photo from device's camera. Save into wardrobe as Clothing object
 	def TakePic(self, event):
 		fileName = "IMG_{}.png".format(time.strftime("%Y%m%d_%H%M%S"))
 		self.camera.export_to_png(fileName)
-		cloth = Clothing(image = fileName)
-		App.get_running_app().wardrobe.SaveClothing(cloth)
-		self.GotoMenu(event)
+		self.clothing = Clothing(image = fileName)
+		self.saveClothing = ClothingPopup(clothing = self.clothing, on_dismiss = self.GotoMenu, edit = False)
+		self.saveClothing.open()
+	
+	

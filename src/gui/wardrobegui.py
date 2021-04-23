@@ -6,6 +6,7 @@ from kivy.uix.gridlayout import GridLayout
 from gui.clothingimage import ClothingImage
 from kivy.core.window import Window
 from kivy.app import App
+from gui.clothingpopup import ClothingPopup
 
 """
 Class: WardrobeGUI
@@ -24,7 +25,8 @@ class WardrobeGUI(ScrollView):
 		
 		self.size_hint = (1, 1)
 		self.size = (Window.width, Window.height)
-		#self.filename = 'wardrobe.dat'
+		
+		self.attrPopup = ClothingPopup(on_dismiss = self.UpdateEvent)
 		
 		self.layout = GridLayout(
 		cols = 2,
@@ -34,10 +36,16 @@ class WardrobeGUI(ScrollView):
 		self.add_widget(self.layout)
 		self.UpdateWidgets()
 	
+	# A kivy-friendly event handler that calls the UpdateWidgets method
+	def UpdateEvent(self, event):
+		self.UpdateWidgets()
+	
 	# Clears the widgets from the layout and re-loads them from the wardrobe
 	def UpdateWidgets(self):
 		self.layout.clear_widgets()
 		
 		wardrobe = App.get_running_app().wardrobe.clothes
 		for name, cloth in wardrobe.items():
-			self.layout.add_widget(ClothingImage(clothing = cloth))
+			self.layout.add_widget(ClothingImage(
+				clothing = cloth,
+				popup = self.attrPopup))

@@ -38,17 +38,52 @@ class ClothingImage(ButtonBehavior, BoxLayout):
 			self.image = Image(source = self.clothing.image)
 			self.add_widget(self.image)
 		else:
+			self.clothing = Clothing()
 			self.error = Label(text = 'Error loading clothing')
 			self.add_widget(self.error)
 		
-		self.label = Label(text = 'test', size_hint = (None, 0.2), color = (0, 0, 0))
-		self.label.font_size = self.label.height / 2
-		self.add_widget(self.label)
-	
-	def ShowAttributes(self):
-		self.attrPopup = ClothingPopup(clothing = self.clothing)
-		self.attrPopup.open()
+		if 'popup' in kwargs:
+			self.attrPopup = kwargs['popup']
 		
+		self.labelColor = Label(
+		text = self.clothing.color,
+		size_hint = (None, 0.2),
+		color = (0, 0, 0))
+		self.labelColor.font_size = self.labelColor.height / 4
+		self.add_widget(self.labelColor)
+		
+		self.labelFormal = Label(
+		size_hint = (None, 0.2),
+		color = (0, 0, 0))
+		self.labelFormal.font_size = self.labelFormal.height / 4
+		if self.clothing.isFormal == True:
+			self.labelFormal.text = 'Formal'
+		else:
+			self.labelFormal.text = 'Casual'
+		self.add_widget(self.labelFormal)
+		
+		self.labelGender = Label(
+		text = self.clothing.gender,
+		size_hint = (None, 0.2),
+		color = (0, 0, 0))
+		self.labelGender.font_size = self.labelGender.height / 4
+		self.add_widget(self.labelGender)
+	
+	# A method for updating the attributes of this ClothingImage object
+	def UpdateSelf(self, event):
+		self.labelColor.text = self.clothing.color
+		text = self.clothing.gender
+		if self.clothing.isFormal == True:
+			self.labelFormal.text = 'Formal'
+		else:
+			self.labelFormal.text = 'Casual'
+	
+	# Open the popup for editing the attributes of this ClothingImage object
+	def ShowAttributes(self):
+		self.attrPopup.LoadClothing(self.clothing)
+		self.attrPopup.open()
+	
+	# Update the size and position of the background
 	def UpdateBackground(self, *args):
 		self.rect.pos = self.pos
 		self.rect.size = (self.width, self.height)
